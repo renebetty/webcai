@@ -32,4 +32,9 @@ public class ProductService {
         return productDao.queryByName(name);
     }
 
+    public Product getById (int id){
+        //查询
+        return productDao.getById(id);
+    }
+
 }

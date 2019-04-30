@@ -104,7 +104,32 @@ public class ProductDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        //
     }
+
+    public Product getById(int id){
+        //用来存储Product对象的泛型集合
+        Product product = new Product();
+        String sql = "select * from product where id = ?";
+        //1、获取Connect对象
+        Connection conn = JdbcUtils.getConnection();
+        try {
+            //2、创建SQL语句，并且配置查询参数
+            PreparedStatement pre = conn.prepareStatement(sql);
+            pre.setInt(1,id);
+            //3、获取查询结果，结果集都被封装到ResultSet对象中
+            ResultSet rs = pre.executeQuery();
+            if (rs.next()){
+                //把当前记录转化为Product对象
+                product.setId(rs.getInt("id"));
+                product.setName(rs.getString("name"));
+                product.setPrice(rs.getDouble("price"));
+                product.setRemark(rs.getString("remark"));
+                product.setDate(rs.getDate("date"));
+            }
+            return product;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

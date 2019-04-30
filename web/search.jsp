@@ -7,7 +7,7 @@
 </head>
 <body>
 <!-- method="get" 会跳转doGet方法中-->
-<form action="/webcai/ProductServlet" method="get">
+<form action="<%=request.getContextPath()%>/ProductServlet" method="get">
         查询关键字<input type="text" name="keyword" value="${sessionScope.keyword}">
     <button>搜索</button>
     <input type="hidden" name="type" value="query">
@@ -33,7 +33,11 @@
             <td>${product.name}</td>
             <td>${product.price}</td>
             <td>${product.remark}</td>
-            <td><a href="/webcai/ProductServlet?id=${product.id}&type=delete">删除</a>|更新</td>
+            <td>
+                <a href="<%=request.getContextPath()%>/ProductServlet?id=${product.id}&type=delete">删除</a>|
+                <a href="<%=request.getContextPath()%>/ProductServlet?id=${product.id}&type=getById">更新</a>
+
+            </td>
         </tr>
     </c:forEach>
 
