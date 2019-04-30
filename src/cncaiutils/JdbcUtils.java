@@ -30,7 +30,7 @@ public class JdbcUtils {
         try {
             //2、配置连接数据库参数
             //驱动管理类，通过此类设置账号，密码，url地址，并且返回connection对象
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/demo","root","root");
+            return DriverManager.getConnection("jdbc:mysql://154.223.189.113:3306/sq_mkjgu105305","sq_mkjgu105305","dir437");
         } catch (Exception e) {
             //显示错误信息
             throw new RuntimeException(e);
